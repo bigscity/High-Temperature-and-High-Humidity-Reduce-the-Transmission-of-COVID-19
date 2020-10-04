@@ -1,0 +1,40 @@
+clear
+insheet using data/CN_reg_betas_spamm.csv
+gen day = v1
+tsset day
+log using "./data/CN_coef_spamm.smcl"
+newey t6, lag(7)
+newey h6, lag(7)
+newey p_dns_norm, lag(7)
+newey old_norm, lag(7)
+newey p_gdp_norm, lag(7)
+newey doc_norm , lag(7)
+newey bmidropr6  , lag(7)
+newey ss_14 , lag(7)
+newey lat_norm, lag(7)
+newey lon_norm, lag(7)
+newey intercept, lag(7)
+
+newey t6 if day < 24, lag(3)
+newey h6 if day < 24, lag(3)
+newey p_dns_norm if day < 24, lag(3)
+newey old_norm if day < 24, lag(3)
+newey p_gdp_norm if day < 24, lag(3)
+newey doc_norm if day < 24, lag(3)
+newey bmidropr6 if day < 24, lag(3)
+newey ss_14 if day < 24, lag(3)
+newey lat_norm if day < 24, lag(3)
+newey lon_norm if day < 24, lag(3)
+newey intercept if day < 24, lag(3)
+
+newey t6 if day >= 24, lag(7)
+newey h6 if day >= 24, lag(7)
+newey p_dns_norm if day >= 24, lag(7)
+newey old_norm if day >= 24, lag(7)
+newey p_gdp_norm if day >= 24, lag(7)
+newey doc_norm if day >= 24, lag(7)
+newey bmidropr6 if day >= 24, lag(7)
+newey ss_14 if day >= 24, lag(7)
+newey lat_norm if day >= 24, lag(7)
+newey lon_norm if day >= 24, lag(7)
+newey intercept if day >= 24, lag(7)

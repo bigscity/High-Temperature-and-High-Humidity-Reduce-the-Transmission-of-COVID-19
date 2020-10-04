@@ -1,0 +1,46 @@
+clear
+insheet using data/US_reg_betas_spamm.csv
+gen day = v1
+tsset day
+newey t6, lag(7)
+newey h6, lag(7)
+log using "./data/US_coef_spamm.smcl"
+newey t6, lag(7)
+newey h6, lag(7)
+newey p_dns_norm, lag(7)
+newey p_over65_norm , lag(7)
+newey gini_norm, lag(7)
+newey se_factor, lag(7)
+newey p_icubeds_norm, lag(7)
+newey m50i6, lag(7)
+newey home6, lag(7)
+newey lat_norm, lag(7)
+newey lon_norm, lag(7)
+newey intercept, lag(7)
+
+newey t6 if day < 23, lag(3)
+newey h6 if day < 23, lag(3)
+newey p_dns_norm if day < 23, lag(3)
+newey p_over65_norm  if day < 23, lag(3)
+newey gini_norm  if day < 23, lag(3)
+newey se_factor  if day < 23, lag(3)
+newey p_icubeds_norm  if day < 23, lag(3)
+newey m50i6  if day < 23, lag(3)
+newey home6  if day < 23, lag(3)
+newey lat_norm   if day < 23, lag(3)
+newey lon_norm   if day < 23, lag(3)
+newey intercept if day < 23, lag(3)
+
+newey t6 if day >= 23, lag(7)
+newey h6 if day >= 23, lag(7)
+newey p_dns_norm if day >= 23, lag(7)
+newey p_over65_norm  if day >= 23, lag(7)
+newey gini_norm if day >= 23, lag(7)
+newey se_factor  if day >= 23, lag(7)
+newey p_icubeds_norm  if day >= 23, lag(7)
+newey m50i6  if day >= 23, lag(7)
+newey home6  if day >= 23, lag(7)
+newey lat_norm  if day >= 23, lag(7)
+newey lon_norm  if day >= 23, lag(7)
+newey intercept if day >= 23, lag(7)
+log close
