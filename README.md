@@ -1,0 +1,1 @@
+# High-Temperature-and-High-Humidity-Reduce-the-Transmission-of-COVID-19
